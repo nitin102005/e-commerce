@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import path from "path";
 
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
@@ -19,7 +18,6 @@ validateEnv();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
 	app.set("trust proxy", 1);
@@ -68,24 +66,6 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/coupons", couponRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
-
-if (process.env.NODE_ENV === "production") {
-	const frontendDist = path.join(__dirname, "frontend", "dist");
-
-	app.use(express.static(frontendDist));
-
-	app.get("*", (req, res, next) => {
-		if (req.path.startsWith("/api")) {
-			return next();
-		}
-
-		res.sendFile(path.join(frontendDist, "index.html"), (error) => {
-			if (error) {
-				next(error);
-			}
-		});
-	});
-}
 
 const startServer = async () => {
 	try {

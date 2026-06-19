@@ -1,5 +1,5 @@
 import { redis } from "../lib/redis.js";
-import { getCookieOptions } from "../lib/cookies.js";
+import { getCookieOptions, getClearCookieOptions } from "../lib/cookies.js";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
@@ -85,8 +85,8 @@ export const logout = async (req, res) => {
 			await redis.del(`refresh_token:${decoded.userId}`);
 		}
 
-		res.clearCookie("accessToken");
-		res.clearCookie("refreshToken");
+		res.clearCookie("accessToken", getClearCookieOptions());
+		res.clearCookie("refreshToken", getClearCookieOptions());
 		res.json({ message: "Logged out successfully" });
 	} catch (error) {
 		console.log("Error in logout controller", error.message);

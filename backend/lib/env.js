@@ -21,4 +21,8 @@ export const validateEnv = () => {
 		console.error(`Missing required environment variables: ${missing.join(", ")}`);
 		process.exit(1);
 	}
+
+	if (!process.env.CLIENT_URL) {
+		console.warn("Warning: CLIENT_URL is not set. CORS will block requests from your Vercel frontend.");
+	}
 };
