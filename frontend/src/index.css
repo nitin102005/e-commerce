@@ -1,0 +1,24 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Marcellus&family=Mona+Sans:ital,wdth,wght@0,87.5,200..900;1,87.5,200..900&display=swap'); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Carlo';
+  src: url('./fonts/Carlo.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'sans.woff2';
+  src: url('./fonts/sans.woff2') format('truetype');
+}
+
+/* .mona-sans{
+  font-family: "Mona Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 87.5;
+} */
