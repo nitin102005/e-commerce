@@ -28,7 +28,7 @@ const getAllowedOrigins = () => {
 		return process.env.CLIENT_URL.split(",").map((url) => url.trim());
 	}
 
-	return ["http://localhost:5173"];
+	return ["https://e-commerce-51q4.vercel.app"];
 };
 
 const allowedOrigins = getAllowedOrigins();
